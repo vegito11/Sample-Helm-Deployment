@@ -1,0 +1,17 @@
+auth:
+  rootPassword: "root@FpO"
+  createDatabase: true
+  database: "userapi"
+  username: "dev"
+  password: "dev@123"
+
+
+primary:
+  startupProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
+  livenessProbe:
+    enabled: false 
+secondary:
+  replicaCount: 0
