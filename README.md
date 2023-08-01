@@ -58,6 +58,8 @@
    INSERT INTO users (user_name, user_email, user_password) VALUES ('John Doe', 'john.doe@example.com', 'secretpassword');
    ```
 
+      ![Mysql Setup](./img/mysql-setup.png)
+
 4. Deploy our app on the k8s using our app chart
    
    ```bash
@@ -72,6 +74,7 @@
       > curl http://userapi:5000
       > curl http://userapi:5000/users
    ```
+      ![Helm Deploy](./img/helm-deploy.png)
 
 ----------------------------------------------------------------
 
@@ -91,9 +94,18 @@
 4. Upon successful CI pipeline runs, the CD pipeline will deploy the updated Helm charts to the target Kubernetes environment (e.g., staging, production).
    
    ```bash
-   helm upgrade --install userapi --set image.tag="0.1.0" .
-   helm upgrade --install userapi --set image.tag="2.2.0" .
+   $ helm upgrade --install userapi --set image.tag="0.1.0" .
+
+   $ kubectl run --rm -it test1 --image nginx -- sh
+      > curl http://userapi:5000
+
+   $ helm upgrade --install userapi --set image.tag="2.2.0" .
+   
+   $ kubectl run --rm -it test2 --image nginx -- sh
+      > curl http://userapi:5000
    ```
+     
+      ![CD](./img/cd.png)
 
 ## Conclusion 
 
