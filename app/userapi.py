@@ -13,14 +13,14 @@ app.config["MYSQL_DATABASE_PASSWORD"] = os.getenv("db_root_password")
 app.config["MYSQL_DATABASE_DB"] = os.getenv("db_name")
 app.config["MYSQL_DATABASE_HOST"] = os.getenv("MYSQL_SERVICE_HOST")
 app.config["MYSQL_DATABASE_PORT"] = int(os.getenv("MYSQL_SERVICE_PORT"))
+APP_VERSION = os.getenv("APP_VERSION", "0.1.0")
 mysql.init_app(app)
 
 
 @app.route("/")
 def index():
     """Home page of the API"""
-    return "Hi :D "
-
+    return f"Hi , welcome to new version !!!! - {APP_VERSION} :D "
 
 @app.route("/create", methods=["POST"])
 def add_user():
